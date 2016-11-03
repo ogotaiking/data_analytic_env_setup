@@ -2,15 +2,15 @@
 ### Based on Ubuntu 16.04
 
 
-## 1. System Package  install
+## 1. System package  installation
 
     sudo apt-get -y update
 
-### 1.a Move Bar to Bottom(Optional)
+### 1.a Move Ubuntu Launcher Bar to bottom(Optional)
 
     gsettings set com.canonical.Unity.Launcher launcher-position Bottom
 
-### 1.b Install VM-Tools(Optional)
+### 1.b Install VM-Tools(Optional, VM only)
 
     sudo apt-get install -y open-vm-tools*
 
@@ -18,10 +18,10 @@
 
     sudo apt-get install -y openssh-server
 
-### 1.d Disable Guest Login on Ubuntu
+### 1.d Disable Guest login on Ubuntu
     echo "allow-guest=false" |sudo tee -a /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
 
-### 1.f Install Packages
+### 1.f Install Packages(Gcc/python/libblas etc ..)
 
     sudo apt-get -y install build-essential gfortran python3-dev python3-pip python-dev python-pip g++ libicu-dev libbz2-dev libblas3 libblas-doc libblas-dev liblapack3 liblapack-doc liblapack-dev build-essential autoconf automake gfortran libpcre3-dev libatlas-dev liblapack-dev libreadline6-dev texinfo texlive-base libfreetype6-dev libpng12-dev libjs-mathjax fonts-mathjax git python-qt4 qt4-designer pyqt4-dev-tools python-qt4-doc python-gtk2-dev
 
@@ -39,12 +39,12 @@
     Xauth username *username*
     Xauth password *password*
 
-#### 1.g.b Make Connection
+#### 1.g.b Make connection
 
     sudo vpnc-connect
     sudo vpnc-disconnect
 
-## 2.CUDA Installation(Optional,IFF you have N-Card)
+## 2.CUDA Installation(Optional,IFF you have Nvidia-Graphic-Card)
 
 ### 2.a Install nVidia CUDA Driver                      
     sudo add-apt-repository -y ppa:graphics-drivers/ppa
@@ -61,7 +61,7 @@
     wget http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run
     sudo sh cuda_7.5.18_linux.run --override
 
-#### 2.c.1 During install
+#### 2.c.1 Dialog during install
 
     Do you accept the previously read EULA? (accept/decline/quit): accept
     You are attempting to install on an unsupported configuration. Do you wish to continue? ((y)es/(n)o) [ default is no ]: *yes*
@@ -92,8 +92,9 @@
 ## 3. Install LAMP (Optional,if you want some Datavisualize on Web)
     sudo apt-get -y install vsftpd screen apache2 mysql-server  php-mysql php libapache2-mod-php php-mcrypt php-mbstring
 
-### 3.a Install  MERN stack for Data Visualize
+### 3.a Install  MERN stack for Data Visualize(Recommend)
     MERN = MongoDB + Express(or koa later ) + React + Nodejs
+    https://github.com/ogotaiking/data-visual-web-framework
 
 
 ## 4.Install pip
@@ -136,7 +137,7 @@ This step may consider both Python2 and Python3 environment
     sudo pip3 install mysqlclient SQLAlchemy zipline
 
 
-### 5.d Misc dependent lib
+### 5.d Misc dependency lib
     sudo apt-get -y install libzmq-dev libffi-dev libxml2-dev libssl-dev libtiff5-dev libjpeg8-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk
     sudo pip3 install pyzmq  jinja2 tornado flask pyflux
 
@@ -147,7 +148,7 @@ This step may consider both Python2 and Python3 environment
     sudo pip3 install jupyter
     sudo cp /usr/local/bin/jupyter-notebook /usr/local/bin/jupyter-notebook-py3
 
-#### 5.e.1 Start Notebook in different version or modify file
+#### 5.e.1 Start Notebook in different version 
 
     python2 /usr/local/bin/jupyter-notebook --ip=0.0.0.0
     python3 /usr/local/bin/jupyter-notebook --ip=0.0.0.0
